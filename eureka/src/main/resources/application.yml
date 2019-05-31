@@ -1,0 +1,25 @@
+spring:
+  application:
+    # Ӧ������
+    name: template-eureka
+  zipkin:
+    base-url: http://localhost:9411
+    boot:
+      admin:
+        client:
+          url: http://localhost:9004
+server:
+  port: 8080
+
+eureka:
+  instance:
+    # Eurekaע������HOST������ַ�����Բ��ã�1.ֱ������IP��2.���ñ����������޸ı���hosts�ļ�
+    hostname: localhost
+  client:
+    # �Ƿ��Լ�ע�ᵽע�����ġ���Ϊ��Ŀ��ֻ��һ��ע�����ľ����Լ�������������ע��
+    register-with-eureka: false
+    # �Ƿ��Զ����ȡ����ע�����ģ���Ϊע������ֻ���Լ����Բ���Ҫ�����ע�������ж���������໥��¶���໥��ȡ
+    fetch-registry: false
+    service-url:
+      # ��ע���������ӵ�ַ
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

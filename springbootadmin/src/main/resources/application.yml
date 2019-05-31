@@ -1,0 +1,25 @@
+
+server:
+  port: 9004
+
+spring:
+  application:
+    name: springbootadmin
+  zipkin:
+    base-url: http://localhost:9411
+
+eureka:
+  client:
+    service-url:
+      # Eureka\u6CE8\u518C\u4E2D\u5FC3\u8FDE\u63A5\u5730\u5740
+      # \u5982\u679C\u6CE8\u518C\u4E2D\u5FC3\u5730\u5740\u914D\u7F6E\u7684\u57DF\u540D\uFF0C\u8FD9\u91CC\u4F7F\u7528 http://\u57DF\u540D/eureka/ \u683C\u5F0F
+      defaultZone: http://localhost:8080/eureka/
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info

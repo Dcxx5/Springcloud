@@ -1,0 +1,36 @@
+
+server:
+  port: 9003
+
+spring:
+  application:
+    name: zuul
+  profiles:
+    active: native
+  cloud:
+    config:
+      uri: http://locahost:8888
+      name: application-zuul
+      profile: dev
+
+eureka:
+  client:
+    service-url:
+      # Eurekaע���������ӵ�ַ
+      # ���ע�����ĵ�ַ���õ�����������ʹ�� http://����/eureka/ ��ʽ
+      defaultZone: http://localhost:8080/eureka/
+
+zuul:
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+  routes:
+    # ·�����ƣ�����
+    template-admin:
+      # ·�ɵ�ַ
+      path: /api/admin/**
+      # ��·�ɵ�ַ��Ӧ�ķ�������
+      serviceId: admin
+    template-auth:
+      path: /api/auth/**
+      serviceId: auth
